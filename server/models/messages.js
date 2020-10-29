@@ -7,9 +7,18 @@ module.exports = {
       if (err) {
         throw (err);
       } else {
-        console.log(result);
+        callback(result);
       }
     });
   }, // a function which produces all the messages
-  create: function () { } // a function which can be used to insert a message into the database
+  create: function (message, cb) {
+
+    db.query('insert into chat values', message, function(err, res) {
+      if (err) {
+        throw (err);
+      } else {
+        callback(result);
+      }
+    });
+  } // a function which can be used to insert a message into the database
 };

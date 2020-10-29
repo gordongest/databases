@@ -16,19 +16,11 @@ connection.connect((err) => {
   console.log('Connected to database');
 });
 
-connection.query(`INSERT INTO rooms (roomname) VALUES ("Electric Boogaloo");`), (err, results, fields) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(fields);
-  }
-};
-
 connection.query(`SELECT * FROM rooms;`, (err, results, fields) => {
   if (err) {
     console.log(err);
   } else {
-    console.log(results);
+    console.log('results:', results);
   }
 });
 
