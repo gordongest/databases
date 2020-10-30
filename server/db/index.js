@@ -11,18 +11,19 @@ var connection = mysql.createConnection({
   multipleStatements: true
 });
 
+
 connection.connect((err) => {
   if (err) { throw err; }
   console.log('Connected to database');
 });
 
-connection.query(`SELECT * FROM rooms;`, (err, results, fields) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log('results:', results);
-  }
-});
+// connection.query(`SELECT * FROM rooms;`, (err, results, fields) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log('results:', results);
+//   }
+// });
 
 module.exports = connection;
 

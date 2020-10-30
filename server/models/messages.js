@@ -1,19 +1,23 @@
 var db = require('../db');
 
 module.exports = {
+
   getAll: function (callback) {
 
-    db.query('SELECT * FROM messages', function (err, result, fields) {
+    db.query('SELECT messages.id, messages.message, messages.room_id, messages.user_id FROM messages', (err, results) => {
       if (err) {
-        throw (err);
+        throw err;
       } else {
-        callback(result);
+        callback(results);
       }
     });
-  }, // a function which produces all the messages
-  create: function (message, cb) {
+  },
 
-    db.query('insert into chat values', message, function(err, res) {
+  // a function which produces all the messages
+  create: function (params, callback) {
+
+    db.query('INSERT INTO messages(message, room_id, user_id) \
+              VALUES (?, ?, ?)', message, function(err, res) {
       if (err) {
         throw (err);
       } else {
